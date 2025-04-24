@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nptel</title>
+    <link rel="stylesheet" href="utils\css\nav.css">
+    <link rel="stylesheet" href="utils\css\course.css">
+</head>
+<body>
+    <input type="checkbox"  id="isHome" class="hide">
+    <nav>
+        <ul>
+            <li><a href="index.html"><img src="assets\images\swayam_logo.png" alt=""></a></li>
+            <li><img src="assets\images\NPTEL_logo_128.png" alt=""></li>
+            <li id="em">2022ec0250@svce.ac.in &#11167</li>
+        </ul>
+    </nav>
+    <div class="nav-det">
+        <label for="weekTray"><img src="assets\images\listW.png" alt="" id="openList"></label>
+        <div><a href="index.html" class="homeA" >NPTEL</a> &#x2B9A;<span id="courseName"> Sensors And Actuators</span></div>
+    </div>
+
+    <div class="contentBody">
+        <input type="checkbox" name="tray" id="weekTray" class="hide">
+        <div class="contentLeft">
+            <h2>Assignment</h1>
+            <label for="weekTray"><img id="closeBut" src="assets\images\cross.png"></label>
+            <ol id="week-list">
+                <li>Week 1</li>
+                <li>Week 2</li>
+                <li>Week 3</li>
+                <li>Week 4</li>
+                <li>Week 5</li>
+                <li>Week 6</li>
+                <li>Week 7</li>
+                <li>Week 8</li>
+                <li>Week 9</li>
+                <li>Week 10</li>
+                <li class="sel">Week 12</li>
+            </ol>
+        </div>
+        <div class="contentRight">
+            <h1 id="week-num">Week 1 Assignment</h1>
+            <input type="checkbox" id="isWeekSelectExam" class="hide">
+            <span id="shuffle-con">Shuffle: 
+                <label ><input class="shuffelBUt" type="radio" name="shuffle" value="1" >on</label>
+                <label ><input class="shuffelBUt" type="radio" name="shuffle" value="0" checked>off</label>
+            </span>
+            
+            <div class="weekSelectExam">
+                <h3>Select Week from 1 to 12:</h3>                
+                <span id="select_type">Select by Range: 
+                    <label ><input class="selectByRangeBut" type="radio" name="selectByRangeBut" value="1" checked>On</label>
+                    <label ><input class="selectByRangeBut" type="radio" name="selectByRangeBut" value="0">Off</label>
+                </span>
+                <div class="fromToBox">
+                    Week Range =  <h5 style="display: inline-block;">From</h5>
+                    <input type="number" id="form" min="1" max="12" value="1" class="fromTO">
+                    <h5 style="display: inline-block;">to</h5>
+                    <input type="number" id="to" min="2" max="12" value="12" class="fromTO">
+                <br>
+                </div>
+                <h5 class="weekCheckBox">Select week</h5>
+                <div class="weekCheckBox ">
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek1">Week 1</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek2">Week 2</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek3">Week 3</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek4">Week 4</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek5">Week 5</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek6">Week 6</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek7">Week 7</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek8">Week 8</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek9">Week 9</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek10">Week 10</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek11">Week 11</label>
+                    <label><input class="cbWeek" type="checkbox" id="cbWeek12">Week 12</label>
+                    <button onclick="weekSelectAll()">Select all</button>
+                </div>
+                <div><h5 style="display: inline-block;">Number of Questions: </h5> <input type="number" id="nQues" value="10"></div>
+                <button id="weekSelectExamUpdate">Refresh / Update</button>
+            </div>
+            <br>
+            MCQ
+            <h4 id="score" >Score: 10/10</h4>
+            <ol id="mcq">
+                <li>
+                    <p class="question">Which of the following stimulus is best suitable for the quantities such as “refractive index, reflectivity, absorption” with regards to sensors?</p>
+                        <img class="imageBox" src="assets\course\Sensors and Actuators\w8q7.png" alt="">
+                    <div class="options">
+                        <label><input type="radio" name="gg" value="12" checked> Acoustic $\\alpha$ <img class="answer-img" src="assets\images\tick.png" alt="" name="a"></label>
+                        <br>
+                        <label><input type="radio" name="gg" value="122"> Magnetic <img class="answer-img" src="assets\images\cross.png" alt="" name="b"></label>
+                    </div>
+                    
+                    <div class="answerBox">
+                        <b id="message">Wrong Answer</b>
+                        <div id="exp">Expected Answer: Magni</div>
+                    </div>
+                </li>
+            </ol>
+            <button id="submit" type="button">Submit</button>
+            <button id="reset" type="button">Reset</button>
+
+        </div>
+    </div>
+    <script type="module" src="utils\js\course.js"></script>
+    <script>
+        function weekSelectAll(){
+            let ele=document.querySelectorAll(".cbWeek");
+            Array.from(ele).forEach(i=>i.checked=true);
+        }
+        var ele=document.getElementsByName("selectByRangeBut");
+        ele=Array.from(ele).forEach(i=>i.addEventListener("click",update))
+        update();
+
+        function update(){
+            var ele=document.getElementsByName("selectByRangeBut");
+            var isRange=Array.from(ele).find(i=>i.checked).value;
+            console.log(isRange);
+            let fromToBox=document.querySelector(".fromToBox");
+            let weekCheckBox=document.querySelectorAll(".weekCheckBox");
+            weekCheckBox=Array.from(weekCheckBox);
+            if(isRange=='0'){
+                fromToBox.style.display="none"
+                weekCheckBox.forEach(i=>i.style.display="flex");
+            }
+            else{
+                fromToBox.style.display="block"
+                weekCheckBox.forEach(i=>i.style.display="none");
+            }
+        }
+    </script>
+</body>
+</html>

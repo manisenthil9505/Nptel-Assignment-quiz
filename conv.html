@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Q&A to JSON Converter</title>
+  <style>
+    *{
+      background: #000;
+      color: white;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 150px;
+      margin-bottom: 10px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      background-color: #000;
+      color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Simple Q&A to JSON Converter</h2>
+
+<textarea id="inputText" placeholder="Paste your question and options here..."></textarea><br>
+
+<button onclick="pasteFromClipboard()">Paste from Clipboard</button>
+<button onclick="convertText()">Convert to JSON</button>
+<button onclick="copyToClipboard()">Copy Output to Clipboard</button>
+
+<div id="output"></div>
+
+<script>
+async function pasteFromClipboard() {
+  try {
+    const text = await navigator.clipboard.readText();
+    document.getElementById('inputText').value = text;
+  } catch (err) {
+    alert('Failed to read clipboard contents');
+  }
+}
+
+function convertText() {
+  const text = document.getElementById('inputText').value.trim();
+  if (!text) {
+    alert('Please paste a statement first.');
+    return;
+  }
+
+  const lines = text.split(/\r?\n/).map(line => line.trim()).filter(line => line);
+
+  if (lines.length < 2) {
+    alert('Please provide at least one question and options.');
+    return;
+  }
+
+  const question = lines[0];
+  const options = lines.slice(1);
+
+  const finalOutput = {
+    question: question,
+    options: options
+  };
+
+  document.getElementById('output').textContent = JSON.stringify(finalOutput, null, 4);
+}
+
+function copyToClipboard() {
+  const output = document.getElementById('output').textContent;
+  if (!output) {
+    alert('Nothing to copy!');
+    return;
+  }
+
+  navigator.clipboard.writeText(output)
+    .then(() => alert('Copied to clipboard!'))
+    .catch(() => alert('Failed to copy!'));
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+nav{
+    height: calc(7vh+1vw); 
+    /* overflow: hidden; */
+    /* border-bottom: 5px solid #993333; */
+ }
+ .hide{display: none;}
+ nav ul{
+    
+     height: 100%;
+     display: flex;
+     align-items: center;
+     padding-inline: 5vw;
+     list-style: none;
+ }
+ nav ul li:last-child{
+ margin-left: auto;
+ }
+ nav ul img{
+     height: 3rem;
+     
+     width:fit-content;
+ }
+ .nav-det{
+     color: #fff;
+     padding: 10px 6vw;
+     background: #993333;
+     position: relative;
+ }
+ #openList{
+    position:absolute;
+    height: 2rem;
+    width: 2.5rem;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+ }
+.homeA{
+    text-decoration: none;
+    color: white;
+}
+ #isHome:checked ~ .nav-det{background-color: #003366;}
+ #avator{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 100%;
+    background: url("assets\\images\\avator.png") no-repeat ;
+    box-shadow: 0px 0px 5px rgba(87, 83, 83, 0.476);
+ }
+ @media screen and (max-width:450px){
+    #em{
+        display: none;
+    }
+    .nav-det{
+        padding-left: 3rem;
+    }
+ }

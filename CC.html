@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        table{
+            border-collapse: collapse; 
+        }
+        tr{
+
+        }
+        td{
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+   
+    <script>
+        var table1={
+            "W: pattern sensitivity fault": "P: cumulative propagation delay through the circuit",
+            "X: crosstalk": "Q: transitioning contents of one memory cell causes change in the contents of another memory cell",
+            "Y: coupling fault": "R: contents of a memory cell is affected by contents of neighboring cell",
+            "Z: path delay fault": "S: between two parallel lines, value of one line is affecting the other"
+        };
+        createTableElement(table1);
+        function createTableElement(tData){
+            var table=document.createElement("table");
+            var keys=Array.from(Object.keys(tData));
+            keys.forEach(i=>{
+                let tr=createRowElement(i,tData[i]);
+                table.append(tr);
+            })
+            return table;
+        }
+        function createRowElement(k,a){
+            let tr=document.createElement("tr");
+            tr.innerHTML=`<td>${k}</td><td>${a}</td>`
+            return tr;
+        }
+
+
+        
+    </script>
+</body>
+</html>
