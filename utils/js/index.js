@@ -1,6 +1,6 @@
 import { fullData } from "./data.js";
 var cList=document.getElementById("courseList");
-for(var i=0;i<fullData.length;i++){
+for(var i=0;i<fullData.length-1;i++){
     let ele=createCourseTile(fullData[i].name,i);
     cList.append(ele);
 }
