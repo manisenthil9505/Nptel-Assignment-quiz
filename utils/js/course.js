@@ -97,11 +97,9 @@ async function submitFun() {
 }
 function changeState(ch) {
     try{
-        for (var i = 1; i <= Object.keys(data[`week ${currentWeek+1}`]).length; i++) {
-            var radio = document.getElementsByName(`name${i}`);
-            radio.forEach(i => {
-                i.disabled = ch == 1 ? true : false;
-            })
+        for(var i=0;i<currentMcqs.length;i++){
+            let ele=document.getElementsByName(`ques${i}`);
+            ele.forEach(i=>i.disabled=ch==1?true:false);
         }
     }
     catch(e){
