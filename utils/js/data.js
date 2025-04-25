@@ -218,7 +218,7 @@ export const fullData = [
                     "answer": "2"
                 },
                 "2": {
-                    "question": "Complete the following sentence: “In the microfabrication facility, the desiccators are used for _________.”",
+                    "question": "Complete the following sentence: <br>“In the microfabrication facility, the desiccators are used for _________.”",
                     "options": [
                         "Substrate heating",
                         "Storing substrates in vacuum",
@@ -228,7 +228,7 @@ export const fullData = [
                     "answer": "1"
                 },
                 "3": {
-                    "question": "Evaluate whether the below statement is true or false: “During the video demonstration, Impedance analyzer was performing two probe measurement which is more accurate than four probe measurement.”",
+                    "question": "Evaluate whether the below statement is true or false:<br> “During the video demonstration, Impedance analyzer was performing two probe measurement which is more accurate than four probe measurement.”",
                     "options": [
                         "True",
                         "False"
@@ -247,7 +247,7 @@ export const fullData = [
                     "answer": "1"
                 },
                 "5": {
-                    "question": "Evaluate whether the below statement is true or false: “In photolithography, soft bake is performed at 50 degrees centigrade for 1 minute.”",
+                    "question": "Evaluate whether the below statement is true or false: <br>“In photolithography, soft bake is performed at 50 degrees centigrade for 1 minute.”",
                     "options": [
                         "True",
                         "False"
